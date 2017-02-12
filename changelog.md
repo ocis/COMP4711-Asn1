@@ -6,6 +6,13 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.0.2] - 2017-02-12
+### New Features
+- Parts view created
+- Parts controller created
+- Parts Model created
+- added robot parts images to /images/parts/ directory
+
 ## [0.0.1] - 2017-02-12
 ### New Features
 - Changelog created
