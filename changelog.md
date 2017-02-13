@@ -6,6 +6,14 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.0.3] - 2017-02-12
+### New Features
+- Added boostrap .js and .css files
+- added jquery
+- Assembly view created
+- Robots Model created
+- Assembly controller created
+
 ## [0.0.2] - 2017-02-12
 ### New Features
 - Parts view created

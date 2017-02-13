@@ -35,6 +35,14 @@ code {
 	padding: 12px 10px 12px 10px;
 }
 
+img.asmImage {
+    width: 100%;
+}
+
+.affix {
+    top: 25%;
+}
+
 #body {
 	margin: 0 15px 0 15px;
 }
