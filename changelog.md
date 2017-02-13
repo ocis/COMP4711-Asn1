@@ -6,6 +6,14 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+
+## [0.3.0] - 2017-02-12
+### New Features
+- History Transaction View created
+- History Transaction Controller created
+- History Transaction Model created
+
+
 ## [0.2.0] - 2017-02-12
 ### New Features
 - Added boostrap .js and .css files
