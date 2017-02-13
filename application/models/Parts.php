@@ -11,7 +11,7 @@
  *
  * @author Billy
  */
-class Parts extends CI_Model{
+class Parts extends CI_Model {
     //put your code here
     	// The data comes from randomly generated musings of my fingers
 	var $data = array(
