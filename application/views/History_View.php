@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>History Transactions</h2>                                            
-  <div class="table-responsive">          
+  <h2>History Transactions</h2>
+  <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -25,7 +25,7 @@
         <td>{Transaction Type}</td>
         <td>{Transaction Date}</td>
         <td>{Transaction Time}</td>
-        <td>{Shipments Status}</td>
+        <td>{Shipment Status}</td>
         <td>{Shipment Date}</td>
         <td>{Shipment Received Date}</td>
         <td>{Shipment Received Time}</td>
