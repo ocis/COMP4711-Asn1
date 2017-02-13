@@ -13,7 +13,6 @@
 - History Transaction Controller created
 - History Transaction Model created
 
-
 ## [0.2.0] - 2017-02-12
 ### New Features
 - Added boostrap .js and .css files
