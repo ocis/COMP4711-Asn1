@@ -31,6 +31,7 @@ class Assembly extends Application
 	{
 		$this->data['pagebody'] = 'assembly_view';
                 
+                //get all robots
                 $sourceRobots = $this->robots->all();
                 $robots = array ();
 		foreach ($sourceRobots as $record)
@@ -43,6 +44,7 @@ class Assembly extends Application
                 
                 $this->data['robots'] = $robots;
                 
+                //getting parts, categorized by type
                 $sourceParts = $this->parts->all();
                 $top_parts = array ();
                 $torso_parts = array ();
