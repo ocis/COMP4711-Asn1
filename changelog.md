@@ -6,6 +6,14 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.4.1] - 2017-02-12
+### Changed Features
+- Fixed History page errors
+- Changed routing for Parts page
+
+## [0.4.0] - 2017-02-12
+### New Features
+- Added Dashboard homepage
 
 ## [0.3.0] - 2017-02-12
 ### New Features
