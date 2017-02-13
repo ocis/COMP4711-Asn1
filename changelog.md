@@ -6,6 +6,10 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.4.2] - 2017-02-12
+### Changed Features
+- Fixed routing for Single-Part page
+
 ## [0.4.1] - 2017-02-12
 ### Changed Features
 - Fixed History page errors
