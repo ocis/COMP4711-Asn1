@@ -13,6 +13,8 @@
  */
 class Parts_Controller extends Application{
     //put your code here
+    
+    //displays all parts on hand
     public function index()
     {
         $this->data['pagebody'] = 'parts_view';
@@ -23,11 +25,12 @@ class Parts_Controller extends Application{
         {
                 $parts_onhand[] = array ('part_code' => $record['part_code'], 'image' => $record['image'],
                     'certificate' => $record['certificate'], 'ahref' => $record['ahref']);
-                //$parts_onhand[] = array ('part_code' => $record['part_code'], 'image' => $record['image'], 'href' => $record['where']);
         }
         $this->data['parts'] = $parts_onhand;
         $this->render(); 
     }
+    
+    //displays a single part in single_part_view
     public function single_part($certificate){
         $this->data['pagebody'] = 'single_part_view';
 
