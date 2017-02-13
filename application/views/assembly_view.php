@@ -69,7 +69,7 @@
                     <p>ID: {id}</p>
                     <p>Top: {top}</p>
                     <p>Torso: {torso}</p>
-                    <p>Torso: {bottom}</p>
+                    <p>Bottom: {bottom}</p>
                 </div>
             </div>
             {/robots}
