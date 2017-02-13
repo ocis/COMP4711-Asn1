@@ -19,8 +19,27 @@ class Welcome extends Application
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'welcome_message';
-		$this->render(); 
+		$this->data['pagebody'] = 'homepage_view';
+
+		$dashboard = array();
+
+		$parts = $this->parts->all();
+		$box = array('title' => 'Parts on Hand', 'value' => count($parts));
+		array_push($dashboard, $box);
+
+		$robots = $this->robots->all();
+		$box = array('title' => 'Assembled Robots', 'value' => count($robots));
+		array_push($dashboard, $box);
+
+		$box = array('title' => 'Money Spent', 'value' => '$100');
+		array_push($dashboard, $box);
+
+		$box = array('title' => 'Money Earned', 'value' => '$100');
+		array_push($dashboard, $box);
+
+    $this->data['modules'] = $dashboard;
+
+    $this->render();
 	}
 
 }

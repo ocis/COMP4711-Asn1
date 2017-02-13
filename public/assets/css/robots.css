@@ -1,3 +1,5 @@
+/* Template */
+
 header {
   height: 40px;
   padding: 10px 0 0 0;
@@ -42,4 +44,22 @@ footer {
 
 #ci_version {
   display: block;
+}
+
+/* Homepage */
+
+.dashboard_box {
+  display: inline-block;
+  width: 44%;
+  vertical-align: top;
+  margin: 0 5% 20px 0;
+  border: 1px solid #bcbcbc;
+  border-radius: 10px;
+  padding: 10px 25px 20px;
+}
+
+.dashboard_num {
+  text-align: center;
+  display: block;
+  font-size: 20px;
 }

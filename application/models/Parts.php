@@ -42,7 +42,6 @@ class Parts extends CI_Model {
 	// retrieve all of the parts on hand
 	public function all()
 	{
-            echo '<script>console.log("Inside all function")</script>';
-            return $this->data;
+    return $this->data;
 	}
 }

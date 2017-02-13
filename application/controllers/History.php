@@ -11,16 +11,9 @@
  *
  * @author jason
  */
-class History extends Application{
-    
-    //constructor
-    function __construct(){
-        parent::_construct();
-        $this->load->model('history');
-    }
-    
+class History extends Application {
     public function index(){
-        $this->data['pagebody'] = 'History_Model';
+        $this->data['pagebody'] = 'history_view';
         $source = $this->history->all();
         $history = array();
         foreach($source as $record){
@@ -35,7 +28,7 @@ class History extends Application{
                                 'Shipment Recieved Date' => $record['Shipment Recieved Date'],
                                 'Shipment Recieved Time' => $record['Shipment Recieved Time']);
         }
-        
+
         $this->data['history'] = $history;
         $this->render();
     }
