@@ -29,7 +29,7 @@ class Parts extends CI_Model{
 		parent::__construct();
 	}
 
-	// retrieve a single quote
+	// retrieve a single part
 	public function get($which)
 	{
 		// iterate over the data until we find the one we want
@@ -39,7 +39,7 @@ class Parts extends CI_Model{
 		return null;
 	}
 
-	// retrieve all of the quotes
+	// retrieve all of the parts on hand
 	public function all()
 	{
             echo '<script>console.log("Inside all function")</script>';
