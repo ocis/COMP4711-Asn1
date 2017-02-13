@@ -11,9 +11,9 @@
  *
  * @author Billy
  */
-class Parts_Controller extends Application{
+class Parts_Controller extends Application {
     //put your code here
-    
+
     //displays all parts on hand
     public function index()
     {
@@ -27,9 +27,9 @@ class Parts_Controller extends Application{
                     'certificate' => $record['certificate'], 'ahref' => $record['ahref']);
         }
         $this->data['parts'] = $parts_onhand;
-        $this->render(); 
+        $this->render();
     }
-    
+
     //displays a single part in single_part_view
     public function single_part($certificate){
         $this->data['pagebody'] = 'single_part_view';

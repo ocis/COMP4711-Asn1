@@ -1,0 +1,65 @@
+/* Template */
+
+header {
+  height: 40px;
+  padding: 10px 0 0 0;
+  box-shadow: 0px -1px 15px 0px;
+  background-color: #d1d1d1;
+}
+
+nav {
+  margin-left: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav a li {
+  color: #333333;
+}
+
+nav a li:hover {
+  color: #333333;
+  text-decoration: underline;
+}
+
+.content {
+  margin: 10px 5% 0;
+}
+
+footer {
+  border-top: 1px solid #f1f1f1;
+  padding-top: 10px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+#ci_version {
+  display: block;
+}
+
+/* Homepage */
+
+.dashboard_box {
+  display: inline-block;
+  width: 44%;
+  vertical-align: top;
+  margin: 0 5% 20px 0;
+  border: 1px solid #bcbcbc;
+  border-radius: 10px;
+  padding: 10px 25px 20px;
+}
+
+.dashboard_num {
+  text-align: center;
+  display: block;
+  font-size: 20px;
+}

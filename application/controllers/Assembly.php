@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * the assembly page, allows you to view your parts and sent them back to head office
  * also allows the assembly and viewing of robots.
- * 
+ *
  * @author Braden D'Eith
  */
 class Assembly extends Application
@@ -14,7 +14,7 @@ class Assembly extends Application
 	{
 		parent::__construct();
 	}
-    
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -30,7 +30,7 @@ class Assembly extends Application
 	public function index()
 	{
 		$this->data['pagebody'] = 'assembly_view';
-                
+
                 //get all robots
                 $sourceRobots = $this->robots->all();
                 $robots = array ();
@@ -41,9 +41,9 @@ class Assembly extends Application
                             'torso' => $record['torso'], 'torsoImage' => $record['torsoImage'],
                             'bottom' => $record['bottom'], 'bottomImage' => $record['bottomImage']);
 		}
-                
+
                 $this->data['robots'] = $robots;
-                
+
                 //getting parts, categorized by type
                 $sourceParts = $this->parts->all();
                 $top_parts = array ();
@@ -77,13 +77,13 @@ class Assembly extends Application
                             break;
                     }
 		}
-                
+
                 $this->data['top_parts'] = $top_parts;
                 $this->data['torso_parts'] = $torso_parts;
                 $this->data['bottom_parts'] = $bottom_parts;
-		
-                
-		$this->render(); 
+
+
+		$this->render();
 	}
 
 }

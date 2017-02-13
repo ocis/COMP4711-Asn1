@@ -11,7 +11,7 @@
  *
  * @author Billy
  */
-class Parts extends CI_Model{
+class Parts extends CI_Model {
     //put your code here
     	// The data comes from randomly generated musings of my fingers
 	var $data = array(
@@ -42,7 +42,6 @@ class Parts extends CI_Model{
 	// retrieve all of the parts on hand
 	public function all()
 	{
-            echo '<script>console.log("Inside all function")</script>';
-            return $this->data;
+    return $this->data;
 	}
 }
