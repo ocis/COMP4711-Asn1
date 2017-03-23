@@ -13,7 +13,7 @@
  */
 class History extends Application {
     public function index(){
-        $this->data['pagebody'] = 'history_view';
+        $this->data['pagebody'] = 'History_View';
         $source = $this->history->all();
         $history = array();
         foreach($source as $record){
