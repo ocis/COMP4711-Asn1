@@ -6,6 +6,10 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.4.2] - 2017-03-23
+### Changed Features
+- Fixed capitalization inconsistencies
+
 ## [0.4.1] - 2017-02-12
 ### Changed Features
 - Fixed History page errors
