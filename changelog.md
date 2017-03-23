@@ -6,9 +6,21 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
-## [0.4.2] - 2017-03-23
+## [0.4.5] - 2017-03-23
 ### Changed Features
 - Fixed capitalization inconsistencies
+
+## [0.4.4] - 2017-02-12
+### Changed Features
+- Fixed nav bar links when on parts page
+
+## [0.4.3] - 2017-02-12
+### Changed Features
+- Fixed history_view parser variables
+
+## [0.4.2] - 2017-02-12
+### Changed Features
+- Fixed routing for Single-Part page
 
 ## [0.4.1] - 2017-02-12
 ### Changed Features

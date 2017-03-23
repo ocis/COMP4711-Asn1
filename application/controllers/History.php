@@ -25,8 +25,8 @@ class History extends Application {
                                 'Transaction Time' => $record['Transaction Time'],
                                 'Shipment Status' => $record['Shipment Status'],
                                 'Shipment Date' => $record['Shipment Date'],
-                                'Shipment Recieved Date' => $record['Shipment Recieved Date'],
-                                'Shipment Recieved Time' => $record['Shipment Recieved Time']);
+                                'Shipment Received Date' => $record['Shipment Received Date'],
+                                'Shipment Received Time' => $record['Shipment Received Time']);
         }
 
         $this->data['history'] = $history;
