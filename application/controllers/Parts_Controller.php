@@ -17,7 +17,7 @@ class Parts_Controller extends Application {
     //displays all parts on hand
     public function index()
     {
-        $this->data['pagebody'] = 'parts_view';
+        $this->data['pagebody'] = 'Parts_View';
         $source = $this->parts->all();
         sort($source);
         $parts_onhand = array();
@@ -32,7 +32,7 @@ class Parts_Controller extends Application {
 
     //displays a single part in single_part_view
     public function single_part($certificate){
-        $this->data['pagebody'] = 'single_part_view';
+        $this->data['pagebody'] = 'Single_Part_View';
 
         $record = $this->parts->get($certificate);
 

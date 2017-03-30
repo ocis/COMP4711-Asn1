@@ -6,6 +6,10 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.4.5] - 2017-03-23
+### Changed Features
+- Fixed capitalization inconsistencies
+
 ## [0.4.4] - 2017-02-12
 ### Changed Features
 - Fixed nav bar links when on parts page
