@@ -6,6 +6,12 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.5.0] - 2017-03-31
+### New Features
+- Added manage page to manage system properties and API link
+- Added database functionality
+- Added library to access Umbrella API
+
 ## [0.4.5] - 2017-03-23
 ### Changed Features
 - Fixed capitalization inconsistencies

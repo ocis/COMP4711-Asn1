@@ -17,7 +17,8 @@
           <a href="/"><li>Home</li></a>
           <a href="/parts"><li>Parts</li></a>
           <a href="/assembly"><li>Assembly</li></a>
-          <a href="/history"><li>History</li></a>
+		  <a href="/history"><li>History</li></a>
+		  <a href="/manage"><li>Manage</li></a>
         </ul>
       </nav>
     </header>

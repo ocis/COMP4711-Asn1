@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('parser');
+$autoload['libraries'] = array('parser', 'database', 'Umbrella_API' => 'umbrella');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('robots', 'parts', 'History_Model' => 'history');
+$autoload['model'] = array('robots', 'parts', 'History_Model' => 'history', 'properties');
