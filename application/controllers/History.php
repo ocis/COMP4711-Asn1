@@ -13,20 +13,17 @@
  */
 class History extends Application {
     public function index(){
-        $this->data['pagebody'] = 'History_View';
+        $this->data['pagebody'] = 'History_view';
         $source = $this->history->all();
         $history = array();
         foreach($source as $record){
-            $history[] = array( 'TransID' => $record['TransID'],
-                                'RobotID' => $record['RobotID'],
-                                'PartsID' => $record['PartsID'],
-                                'Transaction Type' => $record['Transaction Type'],
+            $history[] = array( 'Transaction Type' => $record['Transaction Type'],
                                 'Transaction Date' => $record['Transaction Date'],
                                 'Transaction Time' => $record['Transaction Time'],
-                                'Shipment Status' => $record['Shipment Status'],
                                 'Shipment Date' => $record['Shipment Date'],
                                 'Shipment Received Date' => $record['Shipment Received Date'],
-                                'Shipment Received Time' => $record['Shipment Received Time']);
+                                'Shipment Received Time' => $record['Shipment Received Time'],
+                                'Description' => $record['Description']);
         }
 
         $this->data['history'] = $history;
