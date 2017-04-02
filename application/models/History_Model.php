@@ -11,7 +11,7 @@
  *
  * @author jason
  */
-class History_Model extends CI_Model {
+class History_Model extends My_Model {
     var $data = array(
 		array('TransID' => '1', 'RobotID'=> 'Nectarine', 'PartsID' => 'N1', 'Transaction Type' => 'Sell', 'Transaction Date' => '2017-02-10', 'Transaction Time' => '09:21',
                     'Shipment Status' => 'Received', 'Shipment Date' => '2017-02-12', 'Shipment Received Date' => '2017-02-12', 'Shipment Received Time' => '13:25'),
@@ -27,7 +27,7 @@ class History_Model extends CI_Model {
 	// Constructor
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct('transactions', 'id');
 	}
 	// retrieve all of the data
 	public function all()

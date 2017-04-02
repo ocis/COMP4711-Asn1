@@ -64,6 +64,15 @@ footer {
   font-size: 20px;
 }
 
-img.partspix{
-    width: 100%;
+.row-eq-height{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row-eq-height > [class*='col-']{
+    display: flex;
+    flex-direction: column;
 }

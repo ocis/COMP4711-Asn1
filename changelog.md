@@ -8,6 +8,11 @@
 # Changelog
 ## [0.5.1] - 2017-04-2
 ### New Features
+- Added updating of the transactions for parts purchases
+- Parts page now sorted by line
+
+## [0.5.1] - 2017-04-2
+### New Features
 - Added options to build parts or order a box of parts
 - Parts page now pulls data from database
 
