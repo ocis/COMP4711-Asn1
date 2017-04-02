@@ -35,7 +35,6 @@ class History_model extends CI_Model {
 	public function __construct()
 	{
             parent::__construct();
-            //parent::__construct('transactions', 'id');
 	}
         
 	// retrieve all of the data
