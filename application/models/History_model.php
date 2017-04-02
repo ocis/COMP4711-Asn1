@@ -7,6 +7,7 @@
  */
 
 /**
+<<<<<<< HEAD
  * Description of History
  * 
  * Holds information of plant's history transaction
@@ -43,4 +44,14 @@ class History_model extends CI_Model {
 		return $this->data;
 	}
         
+=======
+ * Description of History_Model
+ *
+ * @author jason
+ */
+class History_model extends MY_Model {
+    public function __construct() {
+        parent::__construct('transactions','id');
+    }
+>>>>>>> 3ad6521ed8047b803fe7f0861a18ed065d96b60e
 }
