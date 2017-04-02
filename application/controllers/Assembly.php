@@ -15,6 +15,14 @@ class Assembly extends Application
 		parent::__construct();
 	}
 
+        /**
+         * called after pressing either of the submit buttons on the parts page.
+         * If the assemble button is pressed it validates that one of each has
+         * been selected, then creates a robot, adds a transaction to the DB and
+         * sets the available flag on the parts to 0.
+         * If return is clicked then it returns the parts selected back to the
+         * server, if there were greater than 0 and less than 3 parts selected.
+         */
         public function submit() {
             switch ($this->input->post('action')) {
                 //Assemble the robot
@@ -45,7 +53,7 @@ class Assembly extends Application
                     //add transaction to the history
                     $transaction->id = "";
                     $transaction->type = "robot_build";
-                    $transaction->part_id = 0;
+                    $transaction->part_id = "";
                     $transaction->robot_id = $this->robots->highest();
                     $transaction->amount = 0;
                     
@@ -105,6 +113,10 @@ class Assembly extends Application
             redirect($_SERVER['HTTP_REFERER']); //back where we came from
         }
         
+        /**
+         * Ships the robot selected in the 'robot' set of radio buttons on the
+         * view.  Then creates a transaction, and deletes the robot from the DB
+         */
         public function ship() {
             if ($this->input->post('ship') != "ship")
                 return;
@@ -122,6 +134,16 @@ class Assembly extends Application
             if ($result['OK'] != 1) {
                 return;
             }
+            
+            $transaction = new StdClass;//create empty trasaction
+            //add transaction to the history
+            $transaction->id = "";
+            $transaction->type = "part_sale";
+            $transaction->part_id = "";
+            $transaction->robot_id = $robot->id;
+            $transaction->amount = $result['response'] / count($parts);
+            
+            $this->history->add($transaction);
             
             //if successful, delete robot
             $this->robots->delete($robot->id);
