@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('parser', 'database', 'Umbrella_API' => 'umbrella');
+$autoload['libraries'] = array('parser', 'database', 'Umbrella_API' => 'umbrella', 'session');
 
 /*
 | -------------------------------------------------------------------

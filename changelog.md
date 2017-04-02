@@ -8,6 +8,11 @@
 # Changelog
 
 ## [0.5.2] - 2017-04-2
+### New Features
+- Added role selection
+- Menubar items disapear based on role
+
+## [0.5.2] - 2017-04-2
 ### Changed Features
 - Shipping robots creates transactions
 - added commenting to functions
