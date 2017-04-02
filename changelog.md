@@ -8,6 +8,11 @@
 # Changelog
 
 ## [0.5.2] - 2017-04-2
+### Changed Features
+- Shipping robots creates transactions
+- added commenting to functions
+
+## [0.5.2] - 2017-04-2
 ### New Features
 - Added assembly page functionality with database
 - Assembly page can now build robots
