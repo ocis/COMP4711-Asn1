@@ -6,6 +6,12 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.5.2] - 2017-04-02
+### New Features
+- Added Sell tab on Manage page
+### Changed Features
+- Updated Settings tab to use bootstrap stylings
+
 ## [0.5.0] - 2017-03-31
 ### New Features
 - Added manage page to manage system properties and API link
