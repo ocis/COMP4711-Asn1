@@ -6,6 +6,11 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.5.1] - 2017-04-2
+### New Features
+- Added options to build parts or order a box of parts
+- Parts page now pulls data from database
+
 ## [0.5.0] - 2017-03-31
 ### New Features
 - Added manage page to manage system properties and API link
