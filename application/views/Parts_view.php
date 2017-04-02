@@ -1,7 +1,17 @@
 <div class="row">
-    {parts}
-    <div class="span4" style="margin: 5px; width:23%; display:inline-block;">
-        <a href="{ahref}"><img src="/images/parts/{image}" style="width:100%;" title="{part_code}"/></a>
+    <div class="row">
+        {parts}
+        <div class="col-xs-6 col-sm-4 col-lg-2">
+            <a href="{ahref}"><img class='partspix' src="/images/parts/{image}" title="{part_code}"/></a>
+        </div>
+        {/parts}
     </div>
-    {/parts}
+    <div class="row">
+    <form action="/Parts_controller/buildparts" method="POST">
+        <input type="submit" value="Build Parts">
+    </form>
+    <form action="/Parts_controller/buybox" method="POST">
+        <input type="submit" value="Buy Box">
+    </form>
+    </div>
 </div>

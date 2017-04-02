@@ -63,3 +63,7 @@ footer {
   display: block;
   font-size: 20px;
 }
+
+img.partspix{
+    width: 100%;
+}
