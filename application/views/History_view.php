@@ -4,24 +4,24 @@
   <table class="table">
     <thead>
       <tr>
+        <th>Transaction ID</th>
         <th>Transaction Type</th>
-        <th>Transaction Date</th>
+        <th>Part ID</th>
+        <th>Robot ID</th>
+        <th>Amount</th>
         <th>Transaction Time</th>
-        <th>Shipment Date</th>
-        <th>Shipment Received Date</th>
-        <th>Shipment Received Time</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
 	  {history}
+        <td>{Transaction ID}</td>
         <td>{Transaction Type}</td>
-        <td>{Transaction Date}</td>
+        <td>{Parts ID}</td>
+        <td>{Robot ID}</td>
+        <td>{Amount}</td>
         <td>{Transaction Time}</td>
-        <td>{Shipment Date}</td>
-        <td>{Shipment Received Date}</td>
-        <td>{Shipment Received Time}</td>
         <td>{Description}</td>
       </tr>
 	  {/history}
