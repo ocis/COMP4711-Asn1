@@ -12,7 +12,7 @@
  * @author jason
  */
 class History extends Application {
-    /*public function index(){
+    public function index(){
         $this->data['pagebody'] = 'History_view';
         $source = $this->history->all();
         $history = array();
@@ -28,25 +28,5 @@ class History extends Application {
 
         $this->data['history'] = $history;
         $this->render();
-    }*/
-    
-    // set number of transactions per page
-    private $num_transactions = 25;
-    
-    public function index()
-    {
-        $this->page(1);
-    }
-    
-    private function show_page($transactions)
-    {
-        $result = '';
-        foreach($transactons as $transaction)
-        {
-            $result .= $this->parser->parse('onetransaction', (array) $transaction, true);
-        }
-        $this->data['display_transactions'] = $result;
-    }
-    
-    
+    }  
 }
