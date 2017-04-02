@@ -13,13 +13,14 @@
         <!--Parts Tab-->
         <div role="tabpanel" class="tab-pane fade in active" id="parts">
             <h2>Parts</h2>
-            <div class="row" style="width:100%">
+            <div class="row">
+                <form action="assembly/submit"  method="post">
                 <div class="col-xs-3">
                     <h3>Top</h3>
                     {top_parts}
                     <div>
-                        <input type="checkbox" name="{part_code}" value="{part_code}">
-                        <img class="asmImage" src="/images/parts/{image}" title="{part_code}"/>
+                        <input type="checkbox" name="1[]" value="{certificate}"/>
+                        <img class="asmImage" src="/images/parts/{image}" title="{certificate}"/>
                     </div>
                     {/top_parts}
                 </div>
@@ -27,8 +28,8 @@
                     <h3>Torso</h3>
                     {torso_parts}
                     <div>
-                        <input type="checkbox" name="{part_code}" value="{part_code}">
-                        <img class="asmImage" src="/images/parts/{image}" title="{part_code}"/>
+                        <input type="checkbox" name="2[]" value="{certificate}"/>
+                        <img class="asmImage" src="/images/parts/{image}" title="{certificate}"/>
                     </div>                    
                     {/torso_parts}
                 </div>
@@ -36,47 +37,54 @@
                     <h3>bottom</h3>
                     {bottom_parts}
                     <div>
-                        <input type="checkbox" name="{part_code}" value="{part_code}">
-                        <img class="asmImage" src="/images/parts/{image}" title="{part_code}"/>
+                        <input type="checkbox" name="3[]" value="{certificate}"/>
+                        <img class="asmImage" src="/images/parts/{image}" title="{certificate}"/>
                     </div>                      
                     {/bottom_parts}
                 </div>
                 <div class="col-xs-3">
                     <div class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-                        <button class="btn btn-default">Build Robot</button>
-                        <button class="btn btn-danger">Return to head Office</button>
+                        <button type="submit" name="action" class="btn btn-default" value="Assemble">Assemble it</button>
+                        <button type="submit" name="action" class="btn btn-danger" value="Return">Return to head office</button>
                       </div>
                 </div>
+                </form>
+
             </div>
         </div>
         
         <!--Robots Tab-->
         <div role="tabpanel" class="tab-pane fade" id="robots">
             <h2>Robots</h2>
-
+            
+            <form action="assembly/ship"  method="post">
             {robots}
             <div class="row">
-                <form class="col-xs-1">
-                    <input type="checkbox" name="{id}" value="{id}">
-                </form>
+                
+                <div class="col-xs-2">
+                    <input type="radio" name="robot" value="{id}" required>
+                </div>
 
-                <div class="col-xs-4">
-                    <img class="asmImage" src="/images/parts/{topImage}" title="top"/>
+                <div class="col-xs-6">
+                    <img class="asmImage" src="/images/parts/{headImage}" title="top"/>
                     <img class="asmImage" src="/images/parts/{torsoImage}" title="torso"/>
-                    <img class="asmImage" src="/images/parts/{bottomImage}" title="bottom"/>
+                    <img class="asmImage" src="/images/parts/{legsImage}" title="legs"/>
                 </div>
-                <div class="col-xs-5">
+                <div class="col-xs-4">
                     <p>ID: {id}</p>
-                    <p>Top: {top}</p>
+                    <p>Top: {head}</p>
                     <p>Torso: {torso}</p>
-                    <p>Bottom: {bottom}</p>
+                    <p>Bottom: {legs}</p>
+                    <p>Built: {built}</p>
                 </div>
+               
             </div>
             {/robots}
-            
             <div>
-                <button class="btn btn-default">Ship to Head Office</button>
+                <button type="submit" name="ship" class="btn btn-default" value="ship">Ship to Head Office</button>
             </div>
+            </form>
+
         </div>
     </div>
 </div>
