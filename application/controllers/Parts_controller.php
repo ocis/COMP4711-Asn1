@@ -33,7 +33,7 @@ class Parts_Controller extends Application {
             $parts_onhand[] = array ('part_code' => $record->model.$record->piece, 'image' => $record->model.$record->piece.'.jpeg',
                 'certificate' => $record->certificate, 'ahref' => '/part/'.$record->certificate, 'line' => $line);
         }
-        
+
         usort($parts_onhand, function($a, $b){
             return strcmp($a['line'], $b['line']);
         });
@@ -84,7 +84,7 @@ class Parts_Controller extends Application {
             $transaction->id = "";
             $transaction->type = 'part_purchase';
             $transaction->part_id = $value->id;
-            $transaction->time = date('Y-m-d H:i:s');
+            $transaction->amount = -100/count($parts);
             $this->history->add($transaction);
         }
         $this->index();

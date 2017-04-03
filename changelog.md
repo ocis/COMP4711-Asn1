@@ -6,6 +6,16 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.6.0] - 2017-04-2
+### New Features
+- Added Sortable History page
+### Changed Features
+- Fixed incorrect transaction types on robot sale and part recycling
+- Tied up loose ends
+
+## [0.5.7] - 2017-04-2
+### Changed Features
+- fixed assembly page images
 
 ## [0.5.6] - 2017-04-2
 ### Changed Features
@@ -39,10 +49,13 @@
 - Added updating of the transactions for parts purchases
 - Parts page now sorted by line
 
-## [0.5.1] - 2017-04-2
+## [0.5.1] - 2017-04-02
 ### New Features
+- Added Sell tab on Manage page
 - Added options to build parts or order a box of parts
 - Parts page now pulls data from database
+### Changed Features
+- Updated Settings tab to use bootstrap stylings
 
 ## [0.5.0] - 2017-03-31
 ### New Features

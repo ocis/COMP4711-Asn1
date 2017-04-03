@@ -6,68 +6,74 @@
  */
 /**
  * Description of History
- * 
+ *
  * Holds information of plant's history transaction
- * 
+ *
  * @author jason
  */
 class History_model extends MY_Model {
     public function __construct() {
         parent::__construct('transactions','id');
     }
-    
-    // retrieve all history transactions
-    public function retrieveTransactions()
-    {
-        return $this->all();
-    }
-    
-    // sort transactions by amount
-    public function sortPrice($order)
-    {
-        // retrieve all history transactions
+
+    public function getSorted($sort) {
         $transactions = $this->all();
-        foreach($transactions as $transaction)
-            $trans[] = (array) $transaction;
-        $amount = array();
-        foreach($trans as $key => $row)
-        {
-            $amount[key] = $row['amount'];
-        }
-        
-        if(strcmp($order, "asc") == 0){
-            array_multisort($amount, SORT_ASC, $trans);
-        } else if(strcmp($order, "desc") == 0){
-            array_multisort($amount, SORT_DESC, $trans);
-        }
-        
-        return $trans;
-    }
-    
-    public function sortByTime($order)
-    {
-        $transactions = $this->all();
-        foreach($transactions as $transaction)
-            $byTime[] = (array) $transaction;
-        if(strcmp($order, "asc") == 0)
-        {
-            usort($byTime, array($this, "sortTimeAsc"));
-        } else if(strcmp($order, "desc") == 0)
-        {
-            usort($byTime, array($this, "sortTimeDesc"));
-        }
-        return $byTime;
-    }
-    
-    // sort transactions by ascending time
-    public function sortTimeAsc($a, $b)
-    {
-        return strtotime($a['time']) - strtotime($b['time']);
-    }
-    
-    // sort transactions by descending time
-    public function sortTimeDesc($a, $b)
-    {
-        return strtotime($b['time']) - strtotime($a['time']);
+        usort($transactions, "order_by_".$sort);
+
+        return $transactions;
     }
 }
+
+function order_by_id($a, $b) {
+    if($a->id < $b->id)
+      return -1;
+    elseif ($a->id > $b->id)
+      return 1;
+    else
+      return 0;
+}
+
+function order_by_type($a, $b) {
+    if($a->type < $b->type)
+      return -1;
+    elseif ($a->type > $b->type)
+      return 1;
+    else
+      return 0;
+}
+
+function order_by_part_id($a, $b) {
+    if($a->part_id < $b->part_id)
+      return -1;
+    elseif ($a->part_id > $b->part_id)
+      return 1;
+    else
+      return 0;
+}
+
+function order_by_robot_id($a, $b) {
+    if($a->robot_id < $b->robot_id)
+      return -1;
+    elseif ($a->robot_id > $b->robot_id)
+      return 1;
+    else
+      return 0;
+}
+
+function order_by_amount($a, $b) {
+    if($a->amount < $b->amount)
+      return -1;
+    elseif ($a->amount > $b->amount)
+      return 1;
+    else
+      return 0;
+}
+
+function order_by_time($a, $b) {
+    if($a->time < $b->time)
+      return -1;
+    elseif ($a->time > $b->time)
+      return 1;
+    else
+      return 0;
+  }
