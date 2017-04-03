@@ -12,24 +12,32 @@
  * @author jason
  */
 class History extends Application {
-    public function index(){
-        $this->data['pagebody'] = 'History_View';
+    /*public function index(){
+        $this->data['pagebody'] = 'History_view';
         $source = $this->history->all();
         $history = array();
         foreach($source as $record){
-            $history[] = array( 'TransID' => $record['TransID'],
-                                'RobotID' => $record['RobotID'],
-                                'PartsID' => $record['PartsID'],
+            $history[] = array( 'Transaction ID' => $record['Transaction ID'],
                                 'Transaction Type' => $record['Transaction Type'],
-                                'Transaction Date' => $record['Transaction Date'],
+                                'Parts ID' => $record['Parts ID'],
+                                'Robot ID' => $record['Robot ID'],
+                                'Amount' => $record['Amount'],
                                 'Transaction Time' => $record['Transaction Time'],
-                                'Shipment Status' => $record['Shipment Status'],
-                                'Shipment Date' => $record['Shipment Date'],
-                                'Shipment Received Date' => $record['Shipment Received Date'],
-                                'Shipment Received Time' => $record['Shipment Received Time']);
+                                'Description' => $record['Description']);
         }
 
         $this->data['history'] = $history;
         $this->render();
+    } */
+    
+    private $num_of_transactions = 25;
+    
+    public function index()
+    {
+        $this->page(1);
+    }
+    
+    private function display_page($transactions)
+    {
     }
 }
