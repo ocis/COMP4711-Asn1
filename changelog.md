@@ -18,16 +18,20 @@
 - fixed assembly page images
 
 ## [0.5.6] - 2017-04-2
+### Changed Features
+- fixed assembly page images
+
+## [0.5.5] - 2017-04-2
 ### New Features
 - Added role selection
 - Menubar items disapear based on role
 
-## [0.5.5] - 2017-04-2
+## [0.5.4] - 2017-04-2
 ### Changed Features
 - Shipping robots creates transactions
 - added commenting to functions
 
-## [0.5.4] - 2017-04-2
+## [0.5.3] - 2017-04-2
 ### New Features
 - Added assembly page functionality with database
 - Assembly page can now build robots
@@ -36,21 +40,18 @@
 ### Changed Features
 - Fixed bug with Umbrella_API
 
-## [0.5.3] - 2017-04-2
+## [0.5.2] - 2017-04-2
 ### New Features
 - Added updating of the transactions for parts purchases
 - Parts page now sorted by line
 
-## [0.5.2] - 2017-04-02
+## [0.5.1] - 2017-04-02
 ### New Features
 - Added Sell tab on Manage page
-### Changed Features
-- Updated Settings tab to use bootstrap stylings
-
-## [0.5.1] - 2017-04-2
-### New Features
 - Added options to build parts or order a box of parts
 - Parts page now pulls data from database
+### Changed Features
+- Updated Settings tab to use bootstrap stylings
 
 ## [0.5.0] - 2017-03-31
 ### New Features
