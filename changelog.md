@@ -6,6 +6,21 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+
+## [0.5.2] - 2017-04-2
+### Changed Features
+- Shipping robots creates transactions
+- added commenting to functions
+
+## [0.5.2] - 2017-04-2
+### New Features
+- Added assembly page functionality with database
+- Assembly page can now build robots
+- Assembly page can now return parts
+- Assembly page, robots tab can now sell robots
+### Changed Features
+- Fixed bug with Umbrella_API
+
 ## [0.5.1] - 2017-04-2
 ### New Features
 - Added updating of the transactions for parts purchases
