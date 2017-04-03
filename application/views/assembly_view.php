@@ -54,37 +54,39 @@
         </div>
         
         <!--Robots Tab-->
-        <div role="tabpanel" class="tab-pane fade" id="robots">
+        <div role="tabpanel" class="tab-pane fade row" id="robots">
             <h2>Robots</h2>
             
             <form action="assembly/ship"  method="post">
-            {robots}
-            <div class="row">
-                
-                <div class="col-xs-2">
-                    <input type="radio" name="robot" value="{id}" required>
-                </div>
+            <div class="row row-eq-height">
+                {robots}
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="col-xs-12">
+                        <div class="col-xs-2">
+                            <input type="radio" name="robot" value="{id}" required>
+                        </div>
 
-                <div class="col-xs-6">
-                    <img class="asmImage" src="/images/parts/{headImage}" title="top"/>
-                    <img class="asmImage" src="/images/parts/{torsoImage}" title="torso"/>
-                    <img class="asmImage" src="/images/parts/{legsImage}" title="legs"/>
+                        <div class="col-xs-6">
+                            <img class="img-responsive" src="/images/parts/{headImage}" title="top"/>
+                            <img class="img-responsive" src="/images/parts/{torsoImage}" title="torso"/>
+                            <img class="img-responsive" src="/images/parts/{legsImage}" title="legs"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <p>ID: {id}</p>
+                            <p>Top: {head}</p>
+                            <p>Torso: {torso}</p>
+                            <p>Bottom: {legs}</p>
+                            <p>Built: {built}</p>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="col-xs-4">
-                    <p>ID: {id}</p>
-                    <p>Top: {head}</p>
-                    <p>Torso: {torso}</p>
-                    <p>Bottom: {legs}</p>
-                    <p>Built: {built}</p>
-                </div>
-               
+                {/robots}
             </div>
-            {/robots}
             <div>
                 <button type="submit" name="ship" class="btn btn-default" value="ship">Ship to Head Office</button>
             </div>
             </form>
-
         </div>
     </div>
 </div>

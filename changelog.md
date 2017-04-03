@@ -9,6 +9,10 @@
 
 ## [0.5.6] - 2017-04-2
 ### Changed Features
+- fixed robot arrangement
+
+## [0.5.6] - 2017-04-2
+### Changed Features
 - fixed assembly page images
 
 ## [0.5.5] - 2017-04-2
