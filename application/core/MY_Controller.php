@@ -32,6 +32,30 @@ class Application extends CI_Controller
 	 */
 	function render($template = 'robots-template')
 	{
+                $role = $this->session->userdata('userrole');
+                $parts = "hidden";
+                $assembly = "hidden";
+                $history = "hidden";
+                $manage = "hidden";
+                
+                switch ($role) {
+                    case "boss":
+                        $history = "";
+                        $manage = "";
+                    case "supervisor":
+                        $assembly = "";
+                    case "worker":
+                        $parts = "";
+                    case "guest":
+                        break;
+                    default:
+                        break;
+                }
+                $this->data['parts_role'] = $parts;
+                $this->data['assembly_role'] = $assembly;
+                $this->data['manage_role'] = $manage;
+                $this->data['history_role'] = $history;
+
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		$this->parser->parse('robots-template', $this->data);
 	}
