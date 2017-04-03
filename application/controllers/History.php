@@ -12,7 +12,7 @@
  * @author jason
  */
 class History extends Application {
-    public function index(){
+    /*public function index(){
         $this->data['pagebody'] = 'History_view';
         $source = $this->history->all();
         $history = array();
@@ -28,5 +28,16 @@ class History extends Application {
 
         $this->data['history'] = $history;
         $this->render();
-    }  
+    } */
+    
+    private $num_of_transactions = 25;
+    
+    public function index()
+    {
+        $this->page(1);
+    }
+    
+    private function display_page($transactions)
+    {
+    }
 }

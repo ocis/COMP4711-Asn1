@@ -7,51 +7,69 @@
  */
 
 /**
-<<<<<<< HEAD
  * Description of History
  * 
  * Holds information of plant's history transaction
  * 
  * @author jason
  */
-class History_model extends CI_Model {
-    var $data = array(
-		array('Transaction ID' => '1', 
-                      'Transaction Type' => 'Sale', 
-                      'Parts ID' => 'A1',
-                      'Robot ID' => 'AA', 
-                      'Amount' => '100', 
-                      'Transaction Time' => '2017-03-31 13:25', 
-                      'Description' => 'Sold to Jim'),
-		array('Transaction ID' => '2', 
-                      'Transaction Type' => 'Return', 
-                      'Parts ID' => 'A1',
-                      'Robot ID' => 'AA', 
-                      'Amount' => '100', 
-                      'Transaction Time' => '2017-04-01 11:20', 
-                      'Description' => 'Part malfunction')
-	);
-    
-	// Constructor
-	public function __construct()
-	{
-            parent::__construct();
-	}
-        
-	// retrieve all of the data
-	public function all()
-	{
-		return $this->data;
-	}
-        
-=======
- * Description of History_Model
- *
- * @author jason
- */
 class History_model extends MY_Model {
     public function __construct() {
         parent::__construct('transactions','id');
     }
->>>>>>> 3ad6521ed8047b803fe7f0861a18ed065d96b60e
+    
+    // retrieve all history transactions
+    public function retrieveTransactions()
+    {
+        return $this->all();
+    }
+    
+    // sort transactions by amount
+    public function sortPrice($order)
+    {
+        // retrieve all history transactions
+        $transactions = $this->all();
+        foreach($transactions as $transaction)
+            $trans[] = (array) $transaction;
+        $amount = array();
+        foreach($trans as $key => $row)
+        {
+            $amount[key] = $row['amount'];
+        }
+        
+        if(strcmp($order, "asc") == 0){
+            array_multisort($amount, SORT_ASC, $trans);
+        } else if(strcmp($order, "desc") == 0){
+            array_multisort($amount, SORT_DESC, $trans);
+        }
+        
+        return $trans;
+    }
+    
+    public function sortByTime($order)
+    {
+        $transactions = $this->all();
+        foreach($transactions as $transaction)
+            $byTime[] = (array) $transaction;
+        if(strcmp($order, "asc") == 0)
+        {
+            usort($byTime, array($this, "sortTimeAsc"));
+        } else if(strcmp($order, "desc") == 0)
+        {
+            usort($byTime, array($this, "sortTimeDesc"));
+        }
+        return $byTime;
+    }
+    
+    // sort transactions by ascending time
+    public function sortTimeAsc($a, $b)
+    {
+        return strtotime($a['time']) - strtotime($b['time']);
+    }
+    
+    // sort transactions by descending time
+    public function sortTimeDesc($a, $b)
+    {
+        return strtotime($b['time']) - strtotime($a['time']);
+    }
 }
