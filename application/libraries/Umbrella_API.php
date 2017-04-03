@@ -54,7 +54,7 @@ class Umbrella_API {
     public function recycle($parts) {
         $request = $this->get_server_url() . "work/recycle";
         foreach($parts as $cert)
-            $server_url .= "/" . $cert;
+            $request .= "/" . $cert;
 
         $request .= $this->get_api_string();
         $response = file_get_contents($request);
@@ -70,7 +70,7 @@ class Umbrella_API {
     public function buymybot($parts) {
         $request = $this->get_server_url() . "work/buymybot";
         foreach($parts as $cert)
-            $server_url .= "/" . $cert;
+            $request .= "/" . $cert;
 
         $request .= $this->get_api_string();
         $response = file_get_contents($request);

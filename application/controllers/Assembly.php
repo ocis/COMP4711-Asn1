@@ -15,6 +15,144 @@ class Assembly extends Application
 		parent::__construct();
 	}
 
+        /**
+         * called after pressing either of the submit buttons on the parts page.
+         * If the assemble button is pressed it validates that one of each has
+         * been selected, then creates a robot, adds a transaction to the DB and
+         * sets the available flag on the parts to 0.
+         * If return is clicked then it returns the parts selected back to the
+         * server, if there were greater than 0 and less than 3 parts selected.
+         */
+        public function submit() {
+            switch ($this->input->post('action')) {
+                //Assemble the robot
+                case "Assemble":
+                    if (count($this->input->post('1')) != 1
+                        || count($this->input->post('2')) != 1
+                        || count($this->input->post('3')) !=1)
+                    {
+                        echo "Incorrect number of parts";
+                        break;
+                    }
+                    $parts[] = $this->parts->get($this->input->post('1')[0]);
+                    $parts[] = $this->parts->get($this->input->post('2')[0]);
+                    $parts[] = $this->parts->get($this->input->post('3')[0]);
+
+                    //create empty objects
+                    $robot = new StdClass;
+                    $transaction = new StdClass;
+
+                    //add parts to the robot
+                    $robot->id = "";
+                    $robot->head = $parts[0]->certificate;
+                    $robot->torso = $parts[1]->certificate;
+                    $robot->legs = $parts[2]->certificate;
+
+                    $this->robots->add($robot);
+
+                    //add transaction to the history
+                    $transaction->id = "";
+                    $transaction->type = "robot_build";
+                    $transaction->part_id = "";
+                    $transaction->robot_id = $this->robots->highest();
+                    $transaction->amount = 0;
+
+                    $this->history->add($transaction);
+
+                    //make parts no longer available
+                    foreach($parts as $part) {
+                        $part->available = 0;
+                        $this->parts->update($part);
+                    }
+
+                    echo "Assembled";
+
+                    break;
+
+                //return the parts to the server
+                case "Return":
+                    if (count($this->input->post('1')) > 0)
+                        foreach($this->input->post('1') as $part)
+                            $parts[] = $part;
+                    if (count($this->input->post('2')) > 0)
+                        foreach($this->input->post('2') as $part)
+                            $parts[] = $part;
+                    if (count($this->input->post('3')) > 0)
+                        foreach($this->input->post('3') as $part)
+                            $parts[] = $part;
+
+                    if (count($parts) > 3 || count($parts) == 0)
+                        break;
+
+                    $result = $this->umbrella->recycle($parts);
+
+                    if ($result['OK'] == 1) {
+                        foreach ($parts as $part) {
+                            $transaction = new StdClass;//create empty trasaction
+                            //add transaction to the history
+                            $transaction->id = "";
+                            $transaction->type = "part_recycle";
+                            $transaction->part_id = $part;
+                            $transaction->robot_id = "";
+                            $transaction->amount = $result['response'] / count($parts);
+
+                            $this->history->add($transaction);
+
+                            $this->parts->delete($part);
+                        }
+                    } else {
+                        break;
+                    }
+
+                    echo "Returned, " . "$" . $result['response'];
+
+                    break;
+                default:
+                    break;
+            }
+            redirect($_SERVER['HTTP_REFERER']); //back where we came from
+        }
+
+        /**
+         * Ships the robot selected in the 'robot' set of radio buttons on the
+         * view.  Then creates a transaction, and deletes the robot from the DB
+         */
+        public function ship() {
+            if ($this->input->post('ship') != "ship")
+                return;
+            if ($this->input->post('robot') == null)
+                return;
+
+            //setup parts into an array
+            $robot = $this->robots->get($this->input->post('robot'));
+            $parts[] = $robot->head;
+            $parts[] = $robot->torso;
+            $parts[] = $robot->legs;
+
+            //try to sell parts
+            $result = $this->umbrella->buymybot($parts);
+            if ($result['OK'] != 1) {
+                return;
+            }
+
+            $transaction = new StdClass;//create empty trasaction
+            //add transaction to the history
+            $transaction->id = "";
+            $transaction->type = "robot_sale";
+            $transaction->part_id = "";
+            $transaction->robot_id = $robot->id;
+            $transaction->amount = $result['response'] / count($parts);
+
+            $this->history->add($transaction);
+
+            //if successful, delete robot
+            $this->robots->delete($robot->id);
+
+            echo "Shipped, " . "$" . $result['response'];
+
+            redirect($_SERVER['HTTP_REFERER']); //back where we came from
+        }
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -34,12 +172,20 @@ class Assembly extends Application
                 //get all robots
                 $sourceRobots = $this->robots->all();
                 $robots = array ();
-		foreach ($sourceRobots as $record)
+		foreach ($sourceRobots as $robot)
 		{
-			$robots[] = array ('id' => $record['id'],
-                            'top' => $record['top'], 'topImage' => $record['topImage'],
-                            'torso' => $record['torso'], 'torsoImage' => $record['torsoImage'],
-                            'bottom' => $record['bottom'], 'bottomImage' => $record['bottomImage']);
+                    $head = $this->parts->get($robot->head);
+                    $torso = $this->parts->get($robot->torso);
+                    $legs = $this->parts->get($robot->legs);
+
+                    $robots[] = array ('id' => $robot->id,
+                        'head' => $robot->head,
+                        'headImage' => $head->model . $head->piece . '.jpeg',
+                        'torso' => $robot->torso,
+                        'torsoImage' => $torso->model . $torso->piece . '.jpeg',
+                        'legs' => $robot->legs,
+                        'legsImage' => $legs->model . $legs->piece . '.jpeg',
+                        'built' => $robot->built);
 		}
 
                 $this->data['robots'] = $robots;
@@ -49,32 +195,31 @@ class Assembly extends Application
                 $top_parts = array ();
                 $torso_parts = array ();
                 $bottom_parts = array ();
-		foreach ($sourceParts as $record)
+		foreach ($sourceParts as $part)
 		{
-                    switch (substr($record['part_code'], -1)) {
-                        case 1:
-                            $top_parts[] = array (
-                                'part_code' => $record['part_code'],
-                                'image' => $record['image'],
-                                'certificate' => $record['certificate'],
-                                'ahref' => $record['ahref']);
-                            break;
-                        case 2:
-                            $torso_parts[] = array (
-                                'part_code' => $record['part_code'],
-                                'image' => $record['image'],
-                                'certificate' => $record['certificate'],
-                                'ahref' => $record['ahref']);
-                            break;
-                        case 3:
-                            $bottom_parts[] = array (
-                                'part_code' => $record['part_code'],
-                                'image' => $record['image'],
-                                'certificate' => $record['certificate'],
-                                'ahref' => $record['ahref']);
-                            break;
-                        default:
-                            break;
+                    if ($part->available == 1) {
+                        switch ($part->piece) {
+                            case 1:
+                                $top_parts[] = array (
+                                    'piece' => $part->piece,
+                                    'image' => $part->model . $part->piece . '.jpeg',
+                                    'certificate' => $part->certificate);
+                                break;
+                            case 2:
+                                $torso_parts[] = array (
+                                    'piece' => $part->piece,
+                                    'image' => $part->model . $part->piece . '.jpeg',
+                                    'certificate' => $part->certificate);
+                                break;
+                            case 3:
+                                $bottom_parts[] = array (
+                                    'piece' => $part->piece,
+                                    'image' => $part->model . $part->piece . '.jpeg',
+                                    'certificate' => $part->certificate);
+                                break;
+                            default:
+                                break;
+                        }
                     }
 		}
 
@@ -82,8 +227,6 @@ class Assembly extends Application
                 $this->data['torso_parts'] = $torso_parts;
                 $this->data['bottom_parts'] = $bottom_parts;
 
-
 		$this->render();
 	}
-
 }

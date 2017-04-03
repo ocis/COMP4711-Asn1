@@ -23,7 +23,7 @@ class Welcome extends Application
 
 		$dashboard = array();
 
-		$parts = $this->parts->all();
+		$parts = $this->parts->some("available", "1");
 		$box = array('title' => 'Parts on Hand', 'value' => count($parts));
 		array_push($dashboard, $box);
 
@@ -31,10 +31,20 @@ class Welcome extends Application
 		$box = array('title' => 'Assembled Robots', 'value' => count($robots));
 		array_push($dashboard, $box);
 
-		$box = array('title' => 'Money Spent', 'value' => '$100');
+		$transactions = $this->history->all();
+		$spent = 0;
+		$earned = 0;
+		foreach($transactions as $trans) {
+			if($trans->amount < 0)
+				$spent -= $trans->amount;
+			else
+				$earned += $trans->amount;
+		}
+
+		$box = array('title' => 'Money Spent', 'value' => '$'.$spent);
 		array_push($dashboard, $box);
 
-		$box = array('title' => 'Money Earned', 'value' => '$100');
+		$box = array('title' => 'Money Earned', 'value' => '$'.$earned);
 		array_push($dashboard, $box);
 
     $this->data['modules'] = $dashboard;

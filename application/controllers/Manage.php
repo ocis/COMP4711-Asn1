@@ -49,9 +49,10 @@ class Manage extends Application {
             $this->properties->update($property);
             $this->data['rreg'] = "<div class=\"has-success\">
                                         <div class=\"help-block\">
-                                            Successfully registered with a $".$response["response"]." balance.
+                                            Successfully registered.
                                         </div>
                                    </div>";
+            $this->reset_data();
         } else {
             $this->data['rreg'] = "<div class=\"has-error\">
                                         <div class=\"help-block\">
@@ -81,6 +82,7 @@ class Manage extends Application {
             $this->data['rreboot'] = "<div class=\"has-success\">
                                         <div class=\"help-block\">Successfully rebooted</div>
                                       </div>";
+            $this->reset_data();
         } else {
             $this->data['rreboot'] = "<div class=\"has-error\">
                                         <div class=\"help-block\">Error".$response['response']."</div>
@@ -99,13 +101,14 @@ class Manage extends Application {
         $response = $this->umbrella->buymybot($parts);
         if($response['OK']) {
             $transaction = array(
+                "id" => "",
                 "type" => "robot_sale",
                 "part_id" => "",
                 "robot_id" => $id,
                 "amount" => trim($response['response'])
             );
 
-            $this->transactions->add($transaction);
+            $this->history->add($transaction);
             $this->parts->delete($robot->head);
             $this->parts->delete($robot->torso);
             $this->parts->delete($robot->legs);
@@ -118,5 +121,11 @@ class Manage extends Application {
 
         $this->data['pagebody'] = 'sold_view';
         $this->render();
+    }
+
+    private function reset_data() {
+        $this->parts->truncate();
+        $this->robots->truncate();
+        $this->history->truncate();
     }
 }

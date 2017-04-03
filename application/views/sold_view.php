@@ -1,4 +1,4 @@
-<form action="manage" method="GET">
-    <button type="submit" class="btn btn-primary">Back to List</button
+<form action="/manage" method="POST">
+    <button type="submit" class="btn btn-primary">Back to List</button>
 </form>
 {response}

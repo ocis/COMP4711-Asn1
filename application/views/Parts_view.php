@@ -1,8 +1,16 @@
 <div class="row">
-    <div class="row">
+    <div class="row row-eq-height">
         {parts}
-        <div class="col-xs-6 col-sm-4 col-lg-2">
-            <a href="{ahref}"><img class='partspix' src="/images/parts/{image}" title="{part_code}"/></a>
+        <div class="col-xs-6 col-sm-3 col-lg-2">
+            <div class="col-xs-12">
+                <a href="{ahref}"><img class='img-responsive' src="/images/parts/{image}" title="Line: {line} - Model: {part_code}"/></a>
+            </div>
+            <div class="col-xs-12">
+                <dt class="col-xs-5">Line:</dt>
+                <dd class="col-xs-7">{line}</dd>
+                <dt class="col-xs-5">Model:</dt>
+                <dd class="col-xs-7">{part_code}</dd>
+            </div>
         </div>
         {/parts}
     </div>
