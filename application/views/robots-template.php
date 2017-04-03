@@ -14,11 +14,20 @@
     <header>
       <nav>
         <ul>
-          <a href="/"><li>Home</li></a>
-          <a href="/parts"><li>Parts</li></a>
-          <a href="/assembly"><li>Assembly</li></a>
-		  <a href="/history"><li>History</li></a>
-		  <a href="/manage"><li>Manage</li></a>
+          <a href="/" ><li>Home</li></a>
+          <a href="/parts" {parts_role}><li>Parts</li></a>
+          <a href="/assembly" {assembly_role}><li>Assembly</li></a>
+          <a href="/history" {history_role}><li>History</li></a>
+          <a href="/manage" {manage_role}><li>Manage</li></a>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Role<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><a href="/roles/actor/guest">Guest</a></li>
+              <li><a href="/roles/actor/worker">Worker</a></li>
+              <li><a href="/roles/actor/supervisor">Supervisor</a></li>
+              <li><a href="/roles/actor/boss">Boss</a></li>
+            </ul>
+          </li> 
         </ul>
       </nav>
     </header>
