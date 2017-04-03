@@ -6,6 +6,10 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.6.1] - 2017-04-2
+### Changed Features
+- Updated sql dump for starter database structure
+
 ## [0.6.0] - 2017-04-2
 ### New Features
 - Added Sortable History page

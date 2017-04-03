@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 31, 2017 at 12:04 PM
+-- Generation Time: Apr 02, 2017 at 07:33 PM
 -- Server version: 5.6.35
 -- PHP Version: 5.6.29
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `robots`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -67,7 +80,7 @@ CREATE TABLE `robots` (
   `head` char(6) NOT NULL,
   `torso` char(6) NOT NULL,
   `legs` char(6) NOT NULL,
-  `built` datetime NOT NULL
+  `built` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -78,16 +91,23 @@ CREATE TABLE `robots` (
 
 CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
-  `type` enum('part_sale','part_purchase','robot_sale','robot_purchase','part_recycle','part_build','box_purchase','robot_build') NOT NULL,
+  `type` enum('part_sale','part_purchase','robot_sale','robot_purchase','part_recycle','part_build','robot_build') NOT NULL,
   `part_id` char(6) NOT NULL,
   `robot_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `time` datetime NOT NULL
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Indexes for table `parts`
