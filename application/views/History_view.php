@@ -1,34 +1,17 @@
-<div class="container">
-  <h2>History Transactions</h2>
-  <div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Transaction ID</th>
-        <th>Transaction Type</th>
-        <th>Part ID</th>
-        <th>Robot ID</th>
-        <th>Amount</th>
-        <th>Transaction Time</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-	  {history}
-        <td>{Transaction ID}</td>
-        <td>{Transaction Type}</td>
-        <td>{Parts ID}</td>
-        <td>{Robot ID}</td>
-        <td>{Amount}</td>
-        <td>{Transaction Time}</td>
-        <td>{Description}</td>
-      </tr>
-	  {/history}
-    </tbody>
-  </table>
-  </div>
-</div>
-
-</body>
-</html>
+<h2>History Transactions</h2>
+{pagination}
+<table class="table">
+<thead>
+  <tr>
+    <th><a href="history?sort=id">Transaction ID</a></th>
+    <th><a href="history?sort=type">Transaction Type</a></th>
+    <th><a href="history?sort=part_id">Part ID</a></th>
+    <th><a href="history?sort=robot_id">Robot ID</a></th>
+    <th><a href="history?sort=amount">Amount</a></th>
+    <th><a href="history?sort=time">Transaction Time</a></th>
+  </tr>
+</thead>
+<tbody>
+    {display_history}
+</tbody>
+</table>
