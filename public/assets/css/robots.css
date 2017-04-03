@@ -76,3 +76,7 @@ footer {
     display: flex;
     flex-direction: column;
 }
+
+img.asmImage{
+    width: 75%;
+}

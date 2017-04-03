@@ -168,7 +168,7 @@ class Assembly extends Application
 	public function index()
 	{
 		$this->data['pagebody'] = 'assembly_view';
-
+                
                 //get all robots
                 $sourceRobots = $this->robots->all();
                 $robots = array ();
