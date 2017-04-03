@@ -8,6 +8,10 @@
 # Changelog
 
 ## [0.5.2] - 2017-04-2
+### Changed Features
+- fixed assembly page images
+
+## [0.5.2] - 2017-04-2
 ### New Features
 - Added role selection
 - Menubar items disapear based on role
