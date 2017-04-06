@@ -6,6 +6,10 @@
 - Jason Chan     (jasonlearn)
 
 # Changelog
+## [0.6.2] - 2017-04-2
+### Changed Features
+- Added filter to parts page to filter out used parts
+
 ## [0.6.1] - 2017-04-2
 ### Changed Features
 - Updated sql dump for starter database structure

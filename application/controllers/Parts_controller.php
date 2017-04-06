@@ -22,7 +22,8 @@ class Parts_Controller extends Application {
         $parts_onhand = array();
         foreach ($source as $record)
         {
-            $model = strtoupper($record->model);
+            if($record->available == 1){
+                            $model = strtoupper($record->model);
             if(ord($model) >= ord('A') && ord($model) <= ord('L')){
                 $line = 'household';
             } else if(ord($model) >= ord('M') && ord($model) <= ord('V')){
@@ -32,6 +33,7 @@ class Parts_Controller extends Application {
             }
             $parts_onhand[] = array ('part_code' => $record->model.$record->piece, 'image' => $record->model.$record->piece.'.jpeg',
                 'certificate' => $record->certificate, 'ahref' => '/part/'.$record->certificate, 'line' => $line);
+            }
         }
 
         usort($parts_onhand, function($a, $b){
